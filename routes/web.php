@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/movie/add', 'MovieController@add')->name('movie_add');
+Route::post('/movie/add', 'MovieController@store')->name('movie_add_store');
