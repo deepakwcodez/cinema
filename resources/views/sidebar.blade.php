@@ -24,7 +24,7 @@
                                 <a href="{{ route('movie_add') }}"><i class="fa fa-plus"></i> Add Movie</a>
                             </li>
                             <li>
-                                <a href="base_ui_widgets.html"><i class="fa fa-minus"></i> Remove Movie</a>
+                                <a href="{{ route('movie_manage') }}"><i class="fa fa-minus"></i> Manage Movie</a>
                             </li>
                         </ul>
                     </li>

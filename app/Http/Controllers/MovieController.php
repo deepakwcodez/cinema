@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Movies;
 use Validator;
-
+use DB;
 class MovieController extends Controller
 {
 	public function add()
@@ -34,4 +34,11 @@ class MovieController extends Controller
 		$movie->save();
         return redirect(route('movie_add'))->with('alert-success', 'The Movie was add successfully');
 	}
+
+	public function manage()
+	{
+		$movieList = DB::table('tbl_movie')->get();
+		return view('movie.managemovie', $movieList);
+	}
+
 }
