@@ -10,17 +10,16 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script type="text/javascript" src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+    <!-- Styles -->
+    <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/app_js.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}" defer></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" id="css-main" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" id="css-main" href="{{ asset('css/oneui.css') }}">
-    
 </head>
 <body>
     <div id="app">
@@ -85,5 +84,7 @@
         @endguest
     </div>
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

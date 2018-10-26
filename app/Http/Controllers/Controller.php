@@ -6,12 +6,15 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Image;
+use File;
+use Response;
 
 class Controller extends BaseController
 {
-	function storage($filename) {
-		$path = storage_path('public/' . $filename);
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function storage($filename) {
+		$path = storage_path('app/'.decrypt($filename));
 
 	    if (!File::exists($path)) {
 	        abort(404);

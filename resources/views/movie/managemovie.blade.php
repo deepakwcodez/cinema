@@ -29,7 +29,7 @@
                                             <td>{{ $value->title }}</td>
                                             <td>{{ $value->description }}</td>
                                             <td>{{ $value->duration }}</td>
-                                            <td><img src="{{ route('get_item',encrypt($value->movie_image)) }}"></td>
+                                            <td><img src="{{ route('get_item',encrypt($value->movie_image)) }}" height="100px" width="100px"></td>
                                             <td class="text-center">
                                                 <div class="btn-group">
                                                     <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
