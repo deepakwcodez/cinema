@@ -29,11 +29,11 @@
                                             <td>{{ $value->title }}</td>
                                             <td>{{ $value->description }}</td>
                                             <td>{{ $value->duration }}</td>
-                                            <td><img src="{{ route('get_item',encrypt($value->movie_image)) }}" height="100px" width="100px"></td>
+                                            <td><img src="{{ route('get_item',encrypt($value->movie_image)) }}" height="100px"></td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                                                    <a href="{{ route('movie_edit',encrypt($value->id)) }}"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Movie"><i class="fa fa-pencil"></i></button></a>
+                                                    <a href="{{ route('movie_remove_store',encrypt($value->id)) }}"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Movie"><i class="fa fa-times"></i></button></a>
                                                 </div>
                                             </td>
                                         </tr>
