@@ -60,7 +60,7 @@ class ScreenController extends Controller
         
 		$remove = $id;
 		$filtered = $collectScreen->map(function ($value, $key) use($remove){
-		    if($value['id']!=$remove) {
+		    if($value['id']==$remove) {
 		    	$value['is_delete'] = 1;
 		    }
 		    return $value;
