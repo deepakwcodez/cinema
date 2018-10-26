@@ -22,4 +22,5 @@ Route::group(['prefix' => '/','middleware' => 'auth'], function() {
 	Route::get('/movie/add', 'MovieController@add')->name('movie_add');
 	Route::post('/movie/add', 'MovieController@store')->name('movie_add_store');
 	Route::get('/movie/manage', 'MovieController@manage')->name('movie_manage');
+	Route::get('storage/{filename}', 'Controller@storage')->name('get_item');
 });

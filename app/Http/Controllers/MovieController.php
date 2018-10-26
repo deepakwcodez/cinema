@@ -38,7 +38,7 @@ class MovieController extends Controller
 	public function manage()
 	{
 		$movieList = DB::table('tbl_movie')->get();
-		return view('movie.managemovie', $movieList);
+		return view('movie.managemovie', compact('movieList'));
 	}
 
 }
