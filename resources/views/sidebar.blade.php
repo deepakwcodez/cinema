@@ -32,10 +32,10 @@
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-desktop"></i><span class="sidebar-mini-hide">Manage Screen</span></a>
                         <ul>
                             <li>
-                                <a href="base_ui_widgets.html"><i class="fa fa-plus"></i> Add Screen</a>
+                                <a href="{{ route('screen_add') }}"><i class="fa fa-plus"></i> Add Screen</a>
                             </li>
                             <li>
-                                <a href="base_ui_widgets.html"><i class="fa fa-minus"></i> Remove Screen</a>
+                                <a href="{{ route('screen_manage') }}"><i class="fa fa-edit"></i> Manage Screen</a>
                             </li>
                         </ul>
                     </li>
