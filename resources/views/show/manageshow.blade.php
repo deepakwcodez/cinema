@@ -14,26 +14,24 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center"></th>
-                                        <th>Title</th>
-                                        <th>Description</th>
-                                        <th>Duration</th>
-                                        <th>Movie Image</th>
+                                        <th>Movie Name</th>
+                                        <th>Time</th>
+                                        <th>Screen</th>
                                         <th class="text-center" style="width: 10%;">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $i=1; ?>
-                                    @foreach($movieList as $key => $value)
+                                    @foreach($showList as $key => $value)
                                         <tr>
                                             <td class="text-center">{{ $i }}</td>
-                                            <td>{{ $value->title }}</td>
-                                            <td>{{ $value->description }}</td>
-                                            <td>{{ $value->duration }}</td>
-                                            <td><img src="{{ route('get_item',encrypt($value->movie_image)) }}" height="100px"></td>
+                                            <td>{{ $value->movie_name }}</td>
+                                            <td>{{ $value->time }}</td>
+                                            <td>{{ $value->screen }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    <a href="{{ route('movie_edit',encrypt($value->id)) }}"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Movie"><i class="fa fa-pencil"></i></button></a>
-                                                    <a href="{{ route('movie_remove_store',encrypt($value->id)) }}" onclick="return confirm('are you sure?');"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Movie"><i class="fa fa-times"></i></button></a>
+                                                    <a href="{{ route('show_edit',encrypt($value->id)) }}"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Show"><i class="fa fa-pencil"></i></button></a>
+                                                    <a href="{{ route('show_remove_store',encrypt($value->id)) }}" onclick="return confirm('are you sure?');"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Show"><i class="fa fa-times"></i></button></a>
                                                 </div>
                                             </td>
                                         </tr>

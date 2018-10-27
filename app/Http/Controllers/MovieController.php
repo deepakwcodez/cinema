@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Movies;
 use Validator;
 use DB;
+
 class MovieController extends Controller
 {
 	public function add()
@@ -67,7 +68,7 @@ class MovieController extends Controller
 			$movie->movie_image = $req->file('movie_image')->store('public/images/movie');
 		}
 		$movie->update();
-		return redirect()->back();
+		return redirect()->back()->with('alert-success', 'The Movie was update successfully');
 	}
 
 	public function remove($id)

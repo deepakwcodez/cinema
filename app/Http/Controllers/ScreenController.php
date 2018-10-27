@@ -58,7 +58,7 @@ class ScreenController extends Controller
         $screenList = json_decode(file_get_contents($file), true);
         $collectScreen = collect($screenList);
         
-		$remove = $id;
+		$remove = decrypt($id);
 		$filtered = $collectScreen->map(function ($value, $key) use($remove){
 		    if($value['id']==$remove) {
 		    	$value['is_delete'] = 1;

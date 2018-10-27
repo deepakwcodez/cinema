@@ -28,7 +28,7 @@
                                             <td class="text-center">
                                                 <div class="btn-group">
                                                     <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Screen"><i class="fa fa-pencil"></i></button>
-                                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Screen" onclick="window.location='{{ route("screen_delete", $value['id']) }}'"><i class="fa fa-times"></i></button>
+                                                    <a href="{{ route('screen_delete', encrypt($value['id'])) }}" onclick="return confirm('are you sure?');"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Screen"><i class="fa fa-times"></i></button></a>
                                                 </div>
                                             </td>
                                         </tr>

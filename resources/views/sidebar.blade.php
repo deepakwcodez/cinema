@@ -43,10 +43,10 @@
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-clock-o"></i><span class="sidebar-mini-hide">Manage Show</span></a>
                         <ul>
                             <li>
-                                <a href="base_ui_widgets.html"><i class="fa fa-plus"></i> Add Show</a>
+                                <a href="{{ route('show_add') }}"><i class="fa fa-plus"></i> Add Show</a>
                             </li>
                             <li>
-                                <a href="base_ui_widgets.html"><i class="fa fa-minus"></i> Remove Show</a>
+                                <a href="{{ route('show_manage') }}"><i class="fa fa-edit"></i> Manage Show</a>
                             </li>
                         </ul>
                     </li>
