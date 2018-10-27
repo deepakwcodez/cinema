@@ -52,6 +52,16 @@ class ScreenController extends Controller
 		return view('screen.managescreen', compact('screenList'));
 	}
 
+	public function edit($id)
+	{
+		$file = public_path()."/screen_list.json";
+        $screenList = json_decode(file_get_contents($file), true);
+        $collectScreen = collect($screenList);
+		$screen = $collectScreen->where('id',decrypt($id))->first();
+		
+		return view('screen.editscreen', compact('screen'));
+	}
+
 	public function delete($id)
 	{
 		$file = public_path()."/screen_list.json";
@@ -68,6 +78,32 @@ class ScreenController extends Controller
 		
         file_put_contents($file, json_encode($filtered));
         return redirect(route('screen_manage'))->with('alert-success', 'The Screen Deleted Successfully');
+	}
+
+	public function update(Request $req)
+	{
+		$input = $req->all();
+		$validator = Validator::make($req->all(), [
+	        'title'=>'required'
+        ]);
+
+	    if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+		$file = public_path()."/screen_list.json";
+        $screenList = json_decode(file_get_contents($file), true);
+        $collectScreen = collect($screenList);
+        
+		$filtered = $collectScreen->map(function ($value, $key) use($input){
+		    if($value['id']==decrypt($input['sid'])) {
+		    	$value['title'] = $input['title'];
+		    }
+		    return $value;
+		});
+		
+        file_put_contents($file, json_encode($filtered));
+        return redirect(route('screen_manage'))->with('alert-success', 'The Screen Updated Successfully');
 	}
 
 }

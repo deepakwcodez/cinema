@@ -33,6 +33,8 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
 	Route::group(['prefix' => 'screen'], function() {
 		Route::get('add', 'ScreenController@add')->name('screen_add');
 		Route::post('add', 'ScreenController@store')->name('screen_add_store');
+		Route::get('screen/edit/{id}', 'ScreenController@edit')->name('screen_edit');
+		Route::post('screen/edit', 'ScreenController@update')->name('screen_edit_update');
 		Route::get('manage', 'ScreenController@manage')->name('screen_manage');
 		Route::get('delete/{id}', 'ScreenController@delete')->name('screen_delete');
 	});
@@ -45,4 +47,5 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
 		Route::get('remove/{id}', 'ShowController@remove')->name('show_remove_store');
 		Route::get('manage', 'ShowController@manage')->name('show_manage');
 	});
+
 });
