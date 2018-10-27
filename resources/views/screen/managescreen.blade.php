@@ -27,8 +27,8 @@
                                             <td>{{ $value['title'] }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Screen"><i class="fa fa-pencil"></i></button>
-                                                    <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Screen" onclick="window.location='{{ route("screen_delete", $value['id']) }}'"><i class="fa fa-times"></i></button>
+                                                    <button class="btn btn-xs btn-default updateScreen" type="button" data-toggle="tooltip" title="Edit Screen"><i class="fa fa-pencil"></i></button>
+                                                    <button class="btn btn-xs btn-default deleteScreen" type="button" data-toggle="tooltip" title="Remove Screen"><i class="fa fa-times"></i></button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -54,6 +54,15 @@
     $(document).ready(function () {
         $('.js-dataTable-full').DataTable();
     });
+    $(document).on('click', '.deleteScreen', function(e) {
+        if(confirm('Are you sure you want to delete screen?')) {
+            window.location='{{ route("screen_delete", $value['id']) }}';
+        }
+    });
+    $(document).on('click', '.updateScreen', function(e) {
+        window.location='{{ route('screen_edit',encrypt($value['id'])) }}';
+    });
+    
 </script>
 
 @endsection

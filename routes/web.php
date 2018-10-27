@@ -31,4 +31,6 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
 	Route::post('screen/add', 'ScreenController@store')->name('screen_add_store');
 	Route::get('screen/manage', 'ScreenController@manage')->name('screen_manage');
 	Route::get('screen/delete/{id}', 'ScreenController@delete')->name('screen_delete');
+	Route::get('screen/edit/{id}', 'ScreenController@edit')->name('screen_edit');
+	Route::post('screen/edit', 'ScreenController@update')->name('screen_edit_update');
 });
