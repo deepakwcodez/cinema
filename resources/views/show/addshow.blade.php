@@ -35,14 +35,19 @@
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label>Time</label><br>
-                            <input type="text" class="form-control" name="time" placeholder="Enter Time" value="{{ old('time') }}" required>
+                            <input type="text" class="form-control" name="time" id="timepicker" placeholder="Enter Time" value="{{ old('time') }}" required>
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label>Screen</label><br>
-                            <input type="text" class="form-control" name="screen" value="{{ old('screen') }}" required>
+                            <select class="form-control" name="screen" required>
+                                <option value="">-- Select Screen --</option>
+                                @foreach($screenList as $key => $value)
+                                    <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>                    
 
@@ -58,4 +63,24 @@
         </div>
     </div>
 </div>
+
+<link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.timepicker.min.css') }}">
+<script type="text/javascript" src="{{ asset('js/jquery.timepicker.min.js') }}" defer></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#timepicker').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 1,
+            minTime: '0',
+            maxTime: '12:59pm',
+            defaultTime: '12',
+            startTime: '00:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+    });
+</script>
+
 @endsection

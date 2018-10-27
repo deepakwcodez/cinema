@@ -11,7 +11,15 @@ class ShowController extends Controller
 {
 	public function add()
 	{
-		return view('show.addshow');
+		$file = public_path()."/screen_list.json";
+        $getScreenList = json_decode(file_get_contents($file), true);
+        $collectScreen = collect($getScreenList);
+        $screenList = $collectScreen->filter(function ($value, $key) {
+		    if($value['is_delete'] != 1) {
+		    	return $value;
+		    }
+		})->all();
+		return view('show.addshow', compact('screenList'));
 	}
 
 	public function store(Request $req)
@@ -36,7 +44,14 @@ class ShowController extends Controller
 
 	public function manage()
 	{
+		$file = public_path()."/screen_list.json";
+        $getScreenList = json_decode(file_get_contents($file), true);
+        $collectScreen = collect($getScreenList);
+
 		$showList = Shows::whereNotIn('status',[0])->get();
+		foreach ($showList as $key => $value) {
+			$value->screen = $collectScreen->where('id',$value->screen)->first()['title'];
+		}
 		return view('show.manageshow', compact('showList'));
 	}
 

@@ -48,4 +48,13 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
 		Route::get('manage', 'ShowController@manage')->name('show_manage');
 	});
 
+	Route::group(['prefix' => 'upcoming'], function() {
+	   	Route::get('add', 'UpcomingController@add')->name('upcoming_add');
+		Route::post('add', 'UpcomingController@store')->name('upcoming_add_store');
+		Route::get('edit/{id}', 'UpcomingController@edit')->name('upcoming_edit');
+		Route::post('edit', 'UpcomingController@update')->name('upcoming_edit_update');
+		Route::get('remove/{id}', 'UpcomingController@remove')->name('upcoming_remove_store');
+		Route::get('manage', 'UpcomingController@manage')->name('upcoming_manage'); 
+	});
+
 });
