@@ -9,6 +9,16 @@ use DB;
 
 class ShowController extends Controller
 {
+	/**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+	
 	public function add()
 	{
 		$file = public_path()."/screen_list.json";

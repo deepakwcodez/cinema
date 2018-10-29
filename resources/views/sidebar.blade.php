@@ -54,12 +54,15 @@
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-film"></i><span class="sidebar-mini-hide">Upcoming Movies</span></a>
                         <ul>
                             <li>
-                                <a href="base_ui_widgets.html"><i class="fa fa-plus"></i> Add Movie</a>
+                                <a href="{{ route('upcoming_add') }}"><i class="fa fa-plus"></i> Add Movie</a>
                             </li>
                             <li>
-                                <a href="base_ui_widgets.html"><i class="fa fa-minus"></i> Remove Movie</a>
+                                <a href="{{ route('upcoming_manage') }}"><i class="fa fa-edit"></i> Manage Upcoming Movie</a>
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="{{ route('profile_index') }}"><i class="fa fa-user"></i> Profile</a>
                     </li>
                     <li>
                         <a href="base_pages_dashboard.html"><i class="fa fa-comments"></i><span class="sidebar-mini-hide">Feedbacks</span></a>

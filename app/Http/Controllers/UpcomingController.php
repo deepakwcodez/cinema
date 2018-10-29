@@ -3,77 +3,82 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Movies;
+use App\Models\Upcoming;
 use Validator;
 use DB;
 
-class MovieController extends Controller
+class UpcomingController extends Controller
 {
+
+	/**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 	public function add()
 	{
-		return view('movie.addmovie');
+		return view('upcoming_movies.addupcomingmovie');
 	}
 
 	public function store(Request $req)
 	{
 	    $validator = Validator::make($req->all(), [
 	        'title'=>'required',
-	        'movie_image'=>'required'
+	        'upcoming_movie_image'=>'required'
         ]);
 
 	    if ($validator->fails()) {
             return redirect(route('upcoming_add'))->withErrors($validator)->withInput();
         }
 
-		$movie = new Movies;
-		$movie->title = $req->title;
-		$movie->description = $req->description;
-		$movie->duration = $req->duration;
-		$movie->movie_image = $req->file('movie_image')->store('public/images/movie');
-		$movie->save();
-        return redirect(route('movie_add'))->with('alert-success', 'The Movie was add successfully');
+		$upcoming = new Upcoming;
+		$upcoming->title = $req->title;
+		$upcoming->movie_image = $req->file('upcoming_movie_image')->store('public/images/upcomingmovies');
+		$upcoming->save();
+        return redirect(route('upcoming_add'))->with('alert-success', 'The Upcoming Movie was add successfully');
 	}
 
 	public function manage()
 	{
-		$movieList = Movies::whereNotIn('status',[0])->get();
-		return view('movie.managemovie', compact('movieList'));
+		$upcomingList = Upcoming::whereNotIn('status',[0])->get();
+		return view('upcoming_movies.manageupcomingmovie', compact('upcomingList'));
 	}
 
 	public function edit($id)
 	{
-		$movie = Movies::find(decrypt($id));
-		return view('movie.editmovie', compact('movie'));
+		$upcoming = Upcoming::find(decrypt($id));
+		return view('upcoming_movies.editupcomingmovie', compact('upcoming'));
 	}
 
 	public function update(Request $req)
 	{
 		$validator = Validator::make($req->all(), [
-	        'title'=>'required',
-	        'description'=>'required',
-	        'duration'=>'required'
+	        'title'=>'required'
         ]);
 
 	    if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-		$movie = Movies::find(decrypt($req->mid));
-		$movie->title = $req->title;
-		$movie->description = $req->description;
-		$movie->duration = $req->duration;
-		if (isset($req->movie_image)) {
-			$movie->movie_image = $req->file('movie_image')->store('public/images/movie');
+		$upcoming = Upcoming::find(decrypt($req->mid));
+		$upcoming->title = $req->title;
+		if (isset($req->upcoming_movie_image)) {
+			$upcoming->movie_image = $req->file('upcoming_movie_image')->store('public/images/upcomingmovies');
 		}
-		$movie->update();
-		return redirect()->back()->with('alert-success', 'The Movie was update successfully');
+		$upcoming->update();
+		return redirect()->back()->with('alert-success', 'The Upcoming Movie was update successfully');
 	}
 
 	public function remove($id)
 	{
-		$movie = Movies::find(decrypt($id));
-		$movie->status = 0;
-		$movie->update();
+		$upcoming = Upcoming::find(decrypt($id));
+		$upcoming->status = 0;
+		$upcoming->update();
 		return redirect()->back();
 	}
 

@@ -8,6 +8,17 @@ use DB;
 
 class ScreenController extends Controller
 {
+
+	/**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 	public function add()
 	{
 		return view('screen.addscreen');

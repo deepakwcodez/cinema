@@ -57,4 +57,9 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
 		Route::get('manage', 'UpcomingController@manage')->name('upcoming_manage'); 
 	});
 
+	Route::group(['prefix' => 'profile'], function() {
+	    Route::get('', 'ProfileController@index')->name('profile_index');
+	    Route::post('changepass', 'ProfileController@changepass')->name('profile_changepass');
+	});
+
 });
